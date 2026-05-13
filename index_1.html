@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ecossistema · Obesidade · Lilly Brazil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #FAF7F2;
+    --parchment-warm: #F1ECE2;
+    --bone: #FDFCFA;
+    --ink-deep: #1F1B16;
+    --ink-mid: #4A4338;
+    --ink-light: #8A8074;
+    --moss: #5C7544;
+    --sienna: #B05633;
+    --amber: #C69A47;
+    --rust: #A04830;
+    --plum: #6E4A66;
+    --teal: #4A7A6F;
+    --line-faint: rgba(31, 27, 22, 0.06);
+    --line-mid: rgba(31, 27, 22, 0.18);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--parchment);
+    color: var(--ink-deep);
+    min-height: 100vh;
+    line-height: 1.5;
+    padding: 60px 24px;
+  }
+
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1.05;
+    color: var(--ink-deep);
+    margin: 0 0 18px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--sienna);
+  }
+
+  .subtitle {
+    font-size: 17px;
+    color: var(--ink-mid);
+    max-width: 640px;
+    margin: 0 auto;
+    font-style: italic;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+
+  .card {
+    background: white;
+    border: 1px solid var(--line-mid);
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--bg-stripe);
+    opacity: 0.85;
+  }
+
+  .card.patient { --bg-stripe: linear-gradient(90deg, var(--moss), var(--teal)); }
+  .card.control { --bg-stripe: linear-gradient(90deg, var(--sienna), var(--amber)); }
+
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 48px rgba(31, 27, 22, 0.1);
+    border-color: var(--ink-deep);
+  }
+
+  .card-icon {
+    font-size: 38px;
+    margin-bottom: 16px;
+    width: 64px;
+    height: 64px;
+    background: var(--parchment-warm);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    line-height: 1.1;
+    margin: 0 0 14px;
+    color: var(--ink-deep);
+  }
+
+  .card-title em {
+    font-style: italic;
+    color: var(--sienna);
+  }
+
+  .card.patient .card-title em { color: var(--moss); }
+
+  .card-desc {
+    font-size: 14px;
+    color: var(--ink-mid);
+    line-height: 1.55;
+    margin-bottom: 22px;
+    flex: 1;
+  }
+
+  .card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .card-feature {
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--ink-mid);
+    background: var(--parchment-warm);
+    padding: 4px 10px;
+    border-radius: 99px;
+    letter-spacing: 0.02em;
+  }
+
+  .card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-deep);
+    border-top: 1px solid var(--line-faint);
+    padding-top: 18px;
+  }
+
+  .card-cta .arrow {
+    transition: transform 0.2s;
+  }
+
+  .card:hover .card-cta .arrow {
+    transform: translateX(4px);
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink-light);
+    border-top: 1px solid var(--line-faint);
+    padding-top: 28px;
+    margin-top: 48px;
+  }
+
+  .footer-meta {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+  }
+
+  .footer-meta span {
+    color: var(--ink-mid);
+  }
+
+  @media (max-width: 760px) {
+    body { padding: 36px 18px; }
+    h1 { font-size: 38px; }
+    .grid { grid-template-columns: 1fr; gap: 18px; }
+    .card { padding: 28px 24px; }
+    .card-title { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="eyebrow">Lilly Brazil · Medical Affairs · Obesidade</div>
+      <h1>Ecossistema digital <em>de cuidado em obesidade</em></h1>
+      <p class="subtitle">Protótipos clicáveis · duas vozes de uma mesma plataforma · o que o paciente vive e o que o clínico decide.</p>
+    </div>
+
+    <div class="grid">
+      <a class="card patient" href="patient-view.html">
+        <div class="card-icon">🌱</div>
+        <div class="card-label">Visão do paciente · B2C</div>
+        <h2 class="card-title">Patient view <em>· o que o paciente vê e sente</em></h2>
+        <p class="card-desc">
+          Onboarding sem fadiga · pré-consulta inteligente · acompanhamento contínuo · árvore de decisão clínica · biblioteca pra entender e cuidar do próprio corpo.
+        </p>
+        <div class="card-features">
+          <span class="card-feature">5 modos</span>
+          <span class="card-feature">SentimentMap</span>
+          <span class="card-feature">FNQ trajectory</span>
+          <span class="card-feature">Sex-gating</span>
+          <span class="card-feature">Fertilidade</span>
+        </div>
+        <div class="card-cta">
+          Abrir patient view <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a class="card control" href="control-center.html">
+        <div class="card-icon">🎯</div>
+        <div class="card-label">Centro de comando · clínica</div>
+        <h2 class="card-title">Control center <em>· torre de comando do pool</em></h2>
+        <p class="card-desc">
+          Pool clínico multi-profissional · 13 análises macro com tooltips · triggers em 4 dimensões · árvore de decisão composta · exportador com 4 etapas pra leadership/advisory.
+        </p>
+        <div class="card-features">
+          <span class="card-feature">Ação · Endereçar</span>
+          <span class="card-feature">13 análises macro</span>
+          <span class="card-feature">Triggers</span>
+          <span class="card-feature">Hoje · timeline</span>
+          <span class="card-feature">Export wizard</span>
+        </div>
+        <div class="card-cta">
+          Abrir control center <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="footer">
+      Protótipos clicáveis · não substituem decisão clínica · uso interno restrito.
+      <div class="footer-meta">
+        <span>v1.0 · 2026</span>
+        <span>·</span>
+        <span>React + Babel · client-side rendering</span>
+        <span>·</span>
+        <span>zero build step</span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
